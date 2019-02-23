@@ -1,0 +1,193 @@
+body{
+    background:rgb(239,245,250);
+}
+/*详情的wrap*/
+.usergroupportrait_top_wrap{
+    width:98%;
+    height:100%;
+    display:box;
+    display:-moz-box;
+    -webkit-box-orient:vertical;
+    box-orient:vertical;
+    margin-left:12px;
+}
+.usergroupportrait_inner_wrap{
+    background:#fff;
+    border-left:1px solid #e4e4e4;
+    border-right:1px solid #e4e4e4;
+    border-top:1px solid #e4e4e4;
+    border-bottom:1px solid #e4e4e4;
+    margin-top:8px;
+    width:100%;
+    flex:1;
+    -webkit-flex:1;
+    -moz-flex:1;
+}
+.usergroupportrait_inner_wrap_nav{
+    width:98%;
+    margin-left:8px;
+    height:36px;
+    line-height:36px;
+    border-bottom:1px solid rgb(1,104,181);
+}
+.usergroupportrait_inner_wrap_text{
+    float:left;
+    font-size:12px;
+    margin-left:8px;
+    margin-top:0px;
+    color:rgb(1,104,181);
+}
+.usergroupportrait_inner_wrap_chose{
+    float: right;
+    width: 98px;
+    height: 22px;
+    line-height:22px;
+    cursor:pointer;
+    background: #0048b5;
+    font-size: 12px;
+    margin-top: 7px;
+    border-radius: 5px;
+    text-align:center;
+    color: #fff;
+}
+.useraddlabel_search{
+    display:inline-block;
+    float:right;
+}
+.usergroupportrait_hidden{
+    padding-left: 15px;
+    width: 130px;
+    height: 22px;
+    line-height:22px;
+    font-size: 12px;
+    display: inline-block;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #ddd;
+
+}
+.usergroupportrait_content{
+    margin-left:8px;
+    margin-top:8px;
+}
+.usergroupportrait_choose{
+    position:relative;
+    top:0px;
+    left:0px;
+    padding: 0px 15px 0px 9px;
+    display:inline-block;
+    margin-top: 5px;
+    margin-right:10px;
+    cursor:pointer;
+    height:18px;
+    line-height:18px;
+    font-size:12px;
+    text-align:center;
+    border: 1px solid rgb(255, 255, 255);
+}
+.border-line{
+    border:1px solid rgb(244,132,0);
+}
+
+.usergroupportrait_text_img{
+    position: absolute;
+    right: -1px;
+    top: 0;
+    width: 19px;
+    height: 18px;
+    background: url(../image/labelsystem/andor.png) no-repeat center center;
+
+}
+/*按钮*/
+.sergroupportrait_addbtn{
+    width:52px;
+    height:23px;
+    text-align:center;
+    border-radius:3px;
+    margin-left:8px;
+    background:rgb(244,130,0);
+    margin-top:15px;
+    margin-bottom:15px;
+    cursor:pointer;
+}
+.sergroupportrait_addbtn_text{
+    font-size:12px;
+    color:#fff;
+}
+/*中间*/
+.usergroupportrait_middle_wrap{
+    height:42px;
+    line-height:42px;
+    width:98%;
+    font-size:12px;
+    margin-left:12px;
+    margin-right:12px;
+
+}
+/*图表的wrap*/
+.usergroupportrait_bottom_wrap{
+
+    height:244px;
+    width:98%;
+    margin-left:12px;
+    margin-right:12px;
+    padding-bottom: 10px;
+    flex:1;
+    -webkit-flex:1;
+    -moz-flex:1;
+}
+/*左侧的图表*/
+.echart{
+    background:#fff;
+    height:244px;
+    width:49%;
+    flex:1;
+    -webkit-flex:1;
+    -moz-flex:1;
+    border:1px solid #ddd;
+}
+.echart_left{
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+/*右侧的图表*/
+.echart_right{
+    float:right;
+}
+.echart_left_nav{
+    position: relative;
+    z-index: 999;
+    margin-left:9px;
+    margin-right:9px;
+    width:96%;
+    line-height:34px;
+    height:34px;
+    border-bottom:1px solid rgb(0,104,181);
+}
+.echart_left_nav_text{
+    font-size:12px;
+    color: rgb(0,104,181);
+}
+.middle_name{
+    margin-left:10px;
+    margin-right:10px;
+}
+.middle_cover{
+    margin-left:10px;
+    margin-right:10px;
+}
+.echart_left_nav_text_link{
+    font-size:12px;
+    color: #fff;
+    border-radius:5px;
+    padding:5px;
+    cursor:pointer;
+    background:#0048b5;;
+}
+
+
+
+
+
+

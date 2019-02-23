@@ -1,0 +1,310 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>LCSH</groupId>
+  <artifactId>LCSH</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>LCSH</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+		<junit.version>4.12</junit.version>
+		<lombok.version>1.18.4</lombok.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<jstl.version>1.2</jstl.version>
+		<javax.servlet.jsp.jstl-api.version>1.2.1</javax.servlet.jsp.jstl-api.version>
+		<spring.version>5.0.0.RELEASE</spring.version>
+		<mybatis.version>3.4.6</mybatis.version>
+		<mybatis.spring.version>1.3.2</mybatis.spring.version>
+		<aspectjweaver.version>1.9.0</aspectjweaver.version>
+		<fastjson.version>1.2.47</fastjson.version>
+		<jackson.version>2.9.4</jackson.version>
+		<log4j.version>2.11.0</log4j.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<druid.version>1.1.9</druid.version>
+		<mysql.version>5.1.46</mysql.version>
+		<freemarker.version>2.3.28</freemarker.version>
+		<fileupload.version>1.3.3</fileupload.version>
+		<commons-io.version>2.6</commons-io.version>
+		<commons-codec.version>1.11</commons-codec.version>
+		<commons-lang3.version>3.7</commons-lang3.version>
+		<wagon.plugin.version>2.0.0</wagon.plugin.version>
+		<shiro.version>1.3.2</shiro.version>
+		<swagger.version>2.4.0</swagger.version>
+	</properties>
+  
+  <dependencies>
+	<!-- junit -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+		<scope>test</scope>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	<dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	    <version>${lombok.version}</version>
+	    <scope>provided</scope>
+	</dependency>
+		
+	<!-- servlet -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>${javax.servlet-api.version}</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+		<version>${jstl.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp.jstl</groupId>
+		<artifactId>javax.servlet.jsp.jstl-api</artifactId>
+		<version>${javax.servlet.jsp.jstl-api.version}</version>
+	</dependency>
+	<!-- spring -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aspects</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-mail</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<!-- mybatis -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>${mybatis.version}</version>
+	</dependency>
+	<!-- mybatis-spring -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis-spring</artifactId>
+		<version>${mybatis.spring.version}</version>
+	</dependency>
+	<!-- fastjson -->
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>fastjson</artifactId>
+		<version>${fastjson.version}</version>
+	</dependency>
+	<!-- log4j-core -->
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-core</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>
+	<!-- log4j-api -->
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-api</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>
+	<!-- log4j-web -->
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-web</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>
+	<!-- slf4j-api -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>${slf4j.version}</version>
+	</dependency>
+	<!-- jcl-over-slf4j -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>jcl-over-slf4j</artifactId>
+		<version>${slf4j.version}</version>
+		<scope>runtime</scope>
+	</dependency>
+	<!-- log4j-slf4j-impl -->
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-slf4j-impl</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>
+	<!-- spring aop depend aspectjweaver -->
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>${aspectjweaver.version}</version>
+	</dependency>
+	<!-- druid -->
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>druid</artifactId>
+		<version>${druid.version}</version>
+	</dependency>
+	<!-- mysql-connector-java -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>${mysql.version}</version>
+	</dependency>
+	<!-- freemarker -->
+	<dependency>
+		<groupId>org.freemarker</groupId>
+		<artifactId>freemarker</artifactId>
+		<version>${freemarker.version}</version>
+	</dependency>
+	<!-- commons -->
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>${fileupload.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>${commons-io.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-codec</groupId>
+		<artifactId>commons-codec</artifactId>
+		<version>${commons-codec.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>${commons-lang3.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>wagon-maven-plugin</artifactId>
+		<version>${wagon.plugin.version}</version>
+	</dependency>
+	<!-- shiro -->
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+		<artifactId>shiro-all</artifactId>
+		<version>${shiro.version}</version>
+	</dependency>
+	<!-- mybatis-generator -->
+	<dependency>
+		<groupId>org.mybatis.generator</groupId>
+		<artifactId>mybatis-generator-core</artifactId>
+		<version>1.3.5</version>
+	</dependency>
+	<!-- shiro-tags -->
+	<dependency>
+		<groupId>net.mingsoft</groupId>
+		<artifactId>shiro-freemarker-tags</artifactId>
+		<version>0.1</version>
+		<exclusions>
+			<exclusion>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	<!-- jackson -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-annotations</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	
+	<!-- swagger -->
+    	<dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+		  <groupId>io.springfox</groupId>
+		  <artifactId>springfox-swagger-ui</artifactId>
+		  <version>${swagger.version}</version>
+		</dependency>
+  </dependencies>
+  <build>
+		<finalName>${project.name}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.5</version>
+				<configuration>
+					<verbose>true</verbose>
+					<overwrite>true</overwrite>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.8</source>
+					<target>1.8</target>
+					<verbose>true</verbose>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.10.v20180503</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<httpConnector>
+						<port>8090</port>
+					</httpConnector>
+					<webApp>
+						<contextPath>/${project.name}</contextPath>
+					</webApp>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

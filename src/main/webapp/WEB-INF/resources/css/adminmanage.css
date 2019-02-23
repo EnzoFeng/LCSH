@@ -1,0 +1,600 @@
+body{
+    background:rgb(239,245,250);
+}
+a:hover,a:focus{
+    text-decoration: none;
+}
+.right_wrap{
+  width:100%;
+  height:100%;
+}
+
+.admin_bottom_wrap{
+    width:97%;
+    min-width:1024px;
+    height:100%;
+    margin-left:12px;
+    margin-top:10px;
+    margin-bottom:10px;
+    background:#fff;
+    border:1px solid #ddd;
+}
+.admin_left{
+    width:170px;
+    float:left;
+    background:#fbfbfb;
+}
+.admin_left_top{
+    height:66px;
+    line-height: 30px;
+    background:#d6e5f1;
+}
+.admin_left_top_txt{
+    font-size:12px;
+    line-height:30px;
+    padding-left:10px;
+}
+.admin_left_top_img{
+    float:right;
+    display:inline-block;
+}
+.admin_left_top_imgposition{
+    width: 12px;
+    height: 12px;
+    display: block;
+    float: left;
+    margin-top: 9px;
+    line-height: 30px;
+    background: url(../image/system_add.png);
+}
+.admin_left_top_add,.admin_left_top_del{
+    display: inline-block;
+    width: 62px;
+    height: 22px;
+    border: 1px solid red;
+    background: red;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    line-height: 22px;
+    border-radius: 5px;
+    cursor:pointer;
+}
+.admin_left_top_add{
+    border: 1px solid #0068b5;
+    background: #0068b5;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.admin_left_userlist{
+    border-right:1px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:170px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+/**娣诲姞宸︿晶鐨勭旱鍚戠殑婊氬姩鏉�**/
+/*瀹氫箟婊氬姩鏉￠珮瀹藉強鑳屾櫙 楂樺鍒嗗埆瀵瑰簲妯珫婊氬姩鏉＄殑灏哄*/
+.admin_left_userlist::-webkit-scrollbar
+{
+    width: 8px;
+    height: 8px;
+    background-color: #F6F7F8;
+}
+.admin_left_userlist::-moz-scrollbar
+{
+    width: 8px;
+    height: 8px;
+    background-color: #F6F7F8;
+}
+
+
+
+/*瀹氫箟婊氬姩鏉¤建閬�*/
+.admin_left_userlist::-webkit-scrollbar-track
+{
+    border-left:1px solid #eee;
+    background-color: #F6F7F8;
+}
+.admin_left_userlist::-moz-scrollbar-track
+{
+    border-left:1px solid #eee;
+    background-color: #F6F7F8;
+}
+
+/*瀹氫箟婊戝潡 鍐呴槾褰�+鍦嗚*/
+.admin_left_userlist::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: #909090;
+}
+.admin_left_userlist::-moz-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: #909090;
+}
+
+.list_item{
+    height:30px;
+    line-height:30px;
+    font-size:12px;
+    padding-left:5px;
+    cursor:pointer;
+    width:170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/**鍙充晶鐨勫垪琛�**/
+.admin_right{
+    min-width:700px;
+    float: left;
+    margin-left: 12px;
+    width: 81%;
+}
+/**鍙冲伌**/
+.admin_nav_wrap{
+     height:35px;
+     border-bottom:1px solid #0068b5;
+}
+.admin_nav_right_search{
+     float:right;
+     height:35px;
+}
+.search{
+    display:inline-block;
+    width:113px;
+    height:35px;
+    line-height:35px;
+}
+.search_componyname{
+    text-align:center;
+    line-height:34px;
+    display:flex;
+    height:34px;
+    justify-content:center;
+    align-items:center;
+    line-height:35px;
+}
+
+.search_username{
+    background:green;
+    display:inline-block;
+    width:113px;
+    height:35px;
+    line-height:35px;
+}
+.search_componyname_input {
+    outline: 0;
+    border: 1px solid #ddd;
+    width: 113px;
+    margin-right: 10px;
+    font-size: 12px;
+    padding-left: 10px;
+    vertical-align: text-bottom;
+    height: 25px;
+    line-height:25px;
+}
+
+.search_username_input{
+    outline: 0;
+    border: 1px solid #ddd;
+    width: 113px;
+    margin-right:10px;
+    font-size:12px;
+    padding-left:10px;
+    vertical-align: text-bottom;
+    height: 25px;
+    line-height:25px;
+}
+.search_componyname_btn{
+    display: inline-block;
+    width: 62px;
+    height: 22px;
+    color: #fff;
+    border-radius: 5px;
+    line-height: 22px;
+    background: #0068b5;
+}
+.admin_nav_text{
+ float:left;
+ line-height:35px;
+ color:#0068b5;
+ font-size:12px;
+}
+.left_gr{
+   background:rgb(245, 247, 250);
+}
+.com_span{
+    color:#666;
+    font-size:12px;
+    height:34px;
+    line-height:34px;
+}
+/**瑙掕壊绠＄悊鐨勭洅瀛�*/
+.rolemanage_wrap{
+  width:97%;
+  margin-left:12px;
+  margin-top:10px;
+  padding:10px;
+  background:#fff;
+  border:1px solid #ddd;
+}
+.rolemanage_nav{
+  height:34px;
+  border-bottom:1px solid #0068b5;
+}
+.rolemanage_text{
+
+}
+ /*鎼滅储娣诲姞*/
+.rolemanage_search_add{
+      height:50px;
+     /* border:1px solid #0068b5;*/
+}
+
+.rolemanage_left_search{
+      float:left;
+      width:255px;
+      height:25px;
+      margin-top:12.5px;
+      margin-bottom:12.5px;
+      background:#fff;
+}
+.rolemanage_search_div{
+    display:inline-block;
+    height:25px;
+}
+.rolemanage_input{
+  width:225px;
+  height: 24px;
+  outline:none;
+  padding-left:12px;
+  font-size:12px;
+  border:1px solid #ddd;
+  background:#fff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #ddd;
+
+}
+.rolemanage_span{
+    height: 24px;
+    width: 30px;
+    float:right;
+    cursor:pointer;
+    border: 1px solid #ddd;
+    border-left:none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background:#fff url(../image/search.png) no-repeat center center;
+}
+
+.rolemanage_right_add{
+     float:right;
+     width:50px;
+     text-align:center;
+     background:#f48400;
+     height:25px;
+     line-height:25px;
+     margin-top:12.5px;
+     border-radius:5px;
+     margin-bottom:12.5px;
+     cursor:pointer;
+}
+.rolemanage_add_text{
+  color:#fff;
+  font-size:12px;
+}
+/*琛ㄦ牸*/
+.rolemanage_table{
+    height:auto;
+   /*
+    border:1px solid #0068b5;
+     */
+}
+.table_wrap{
+    margin-top:0px;
+}
+thead>tr>th{
+    text-align:center;
+    font-size:14px;
+}
+
+tbody>tr>td{
+    text-align:center;
+    font-size:14px;
+}
+tbody>tr>td{
+    text-align:center;
+    font-size:14px;
+}
+tbody>tr>td>a{
+    text-align:center;
+    font-size:14px;
+    color:#0068b5;
+}
+/**鍒嗛爜**/
+.pages{
+    height:35px;
+    line-height:35px;
+    font-size:12px;
+    width:100%;
+    margin-bottom: 20px;
+    border: 1px solid #e4e4e4;
+    margin-left: 0;
+}
+.page_num_right{
+    float:right;
+}
+.home_page{
+    width:42px;
+    height:18px;
+    padding:5px;
+    cursor:pointer;
+    border-radius:2px;
+    border:1px solid #e4e4e4;
+    background:#fff;
+}
+
+.end_page{
+    width:42px;
+    height:18px;
+    padding:5px;
+    cursor:pointer;
+    border-radius:2px;
+    border:1px solid #e4e4e4;
+    background:#fff;
+}
+.up_page{
+    width:56px;
+    height:18px;
+    padding:5px;
+    border-radius:2px;
+    cursor:pointer;
+    border:1px solid #e4e4e4;
+    background:#fff;
+}
+.next_page{
+    width:56px;
+    height:18px;
+    border-radius:2px;
+    padding:5px;
+    cursor:pointer;
+    border:1px solid #e4e4e4;
+    background:#fff;
+}
+
+.search_page_num{
+    background: none;
+    outline: none;
+    vertical-align: middle;
+    border: 1px solid #e4e4e4;
+    width: 42px;
+    height: 26px;
+    line-height: 26px;
+    margin-top: -2px;
+    border-radius: 2px;
+    display: inline-block;
+}
+.search_page{
+    outline: none;
+    width:56px;
+    height:18px;
+    border-radius:2px;
+    padding:5px;
+    cursor:pointer;
+    background:#0068b5;
+    color:#fff;
+}
+.select_companyname{
+
+}
+.company_btn{
+    margin-left:-5px!important;
+    width: 345px;
+}
+.admin_base_dropdown-menu_ul{
+    height: 150px!important;
+    overflow: auto;
+}
+.admin_dropdown-menu_ul_role{
+    height: 75px!important;
+    overflow: auto;
+}
+.company_ul{
+    width: 345px;
+    margin-left: -5px;
+}
+.dropdown-menu > li > a {
+     display: block;
+     width: 326px!important;
+     padding: 4px 20px;
+     clear: both;
+     font-weight: normal;
+     line-height: 1.42857143;
+     color: #333;
+     white-space: nowrap;
+}
+.addinstitutionmodel{
+    line-height:35px;
+}
+.addrolemodel_sp{
+    line-height:35px;
+    margin-left: 13px;
+}
+.addrolemodel_roleassignments{
+    margin-left:-2px;
+}
+.startworn{
+    color:red;
+    float:left;
+}
+.startworn_fileupload{
+    color: red;
+    float: left;
+    margin-left: -5px;
+}
+.company_must{
+    margin-top:8px;
+}
+.addrolemodel_span{
+    float:left;
+}
+.addrolemodel_span_file{
+    line-height:30px;
+}
+.startworn_file{
+    line-height:55px;
+    float:left;
+    color:red;
+}
+.fileinput{
+    width:70%;
+    display: inline-block;
+}
+.filediv{
+    display:inline-block;
+    position:relative;
+}
+.fileinputBtn{
+    width: 75px;
+    display: inline-block!important;
+}
+::-ms-browse, [type='file'] {
+    padding: .4em;
+    border: 1px solid #a0b3d6;
+    background: #f0f3f9;
+    color: #34538b;
+}
+::-webkit-file-upload-button {
+    padding: .4em;
+    width:73px;
+    border-radius:5px;
+    margin-top:10px;
+    border: 1px solid #a0b3d6;
+    background: #f0f3f9;
+    color: #34538b;
+}
+.fileinputBtn_span{
+    width:50px;
+    height:50px;
+    background:#ddd;
+    display:inline-block;
+}
+.addrolemodel_input{
+    float:left;
+    width:62%;
+}
+.addrolemodel_input_phone{
+    float:left;
+    width:61%;
+}
+.addrolemodel_worn{
+    font-size:12px;
+    color:#999;
+    margin-left:10px;
+}
+
+.admin_middle_import{
+ height:43px;
+ line-height:43px;
+}
+.import_add{
+    float:right;
+    height:43px;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    line-height:43px;
+    cursor:pointer;
+}
+.import_btn{
+    width: 62px;
+    border-radius:5px;
+    color:#fff;
+    margin-right: 10px;
+    height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    background: #0068b5;
+    font-size:12px;
+
+}
+.add_btn{
+    width: 62px;
+    height: 22px;
+    line-height: 22px;
+    color:#fff;
+    display: inline-block;
+    background: red;
+    border-radius:5px;
+    font-size:12px;
+    cursor:pointer;
+}
+.loadfile {
+    position: relative;
+    padding: 15px;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+.list_item_div{
+    height:30px;
+    line-height:30px;
+    font-size:12px;
+    padding-left:5px;
+    cursor:pointer;
+    width:170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.add_two{
+  margin-left:14px;
+}
+
+.addrolemodel_wornone{
+    font-size:12px;
+    color:#999;
+    margin-left:90px;
+}
+.addrolemodel_div{
+    margin-bottom:10px;
+}
+.addrolemodel_worntwo{
+    font-size:12px;
+    color:#999;
+    margin-left:90px;
+    margin-bottom:10px;
+}
+
+
+/**6.14*/
+.first-modal-body{
+    position: relative;
+    padding: 15px 15px 0px 15px;
+}
+.addrolemodel_phone{
+    margin-left: 4px;
+}
+.addrolemodel{
+    margin-left: 13px;
+}
+
+.modal-body.model-body-add{
+	line-height:35px;
+}
+.edit-user{
+	line-height:35px;
+}
+.modal-body-add {
+    line-height: 30px;
+}
+.addlineheight {
+    line-height: 35px;
+}

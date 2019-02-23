@@ -1,0 +1,284 @@
+/**微观画像的搜索页面**/
+.Microcosmic_centerIN{
+    height: 655px;
+    background: #FFFFFF;
+}
+.Microcosmic_centerIN_top{
+    height: 49px;
+    border-bottom: 1px solid rgb(211,211,211);
+}
+.User_centerIN_top span{
+    display: inline-block;
+    cursor: pointer;
+}
+.Microcosmic_centerIN_top1{
+    width: 140px;
+    height: 44px;
+    display: inline-block;
+    line-height: 44px;
+    margin-top: 5px;
+    margin-left: 27px;
+    text-align: center;
+    background: #fff;
+
+    font-size: 18px;
+    cursor:pointer;
+    color: #000;
+    border-bottom:2px solid #169bd5;
+}
+.Microcosmic_centerIN_top2{
+    width: 140px;
+    height: 44px;
+    display: inline-block;
+    line-height: 44px;
+    margin-top: 5px;
+    margin-left: -4px;
+    text-align: center;
+    background: #fff;
+
+    font-size: 18px;
+    cursor:pointer;
+    color: gray;
+    border-bottom: 1px solid rgb(211,211,211);
+}
+
+.Microcosmic_centerIN_tubiao,
+.Microcosmic_centerIN_liebiao{
+    height: 655px;
+    background:#fff;
+}
+.Microcosmic_centerIN_liebiao{
+    display: none;
+    margin-top: 40px;
+    padding: 0 30px;
+}
+.Microcosmic_centerIN_tubiao{
+    display: block;
+}
+/**微观画像人物图像**/
+.microcosmic_people{
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    /*只需要在父元素上加这三句*/
+    justify-content: center; /*子元素水平居中*/
+    align-items: center; /*子元素垂直居中*/
+    display: -webkit-flex;
+}
+.microcosmic_people_img{
+    width:283px;
+    height:283px;
+    background:url('../image/microportraitsearch/people.png');
+}
+/*  S label_item   ----   left   */
+.label_item1{
+    margin-left: -150px;
+    height: 100px;
+    background: url('../image/microportraitsearch/left_line.png') no-repeat -15px 15px;
+}
+/*文字*/
+.label_item1_text1{
+    color:#000;
+    position: absolute;
+}
+.label_item1_div1{
+    float: left;
+    margin-top: -30px;
+    margin-left: -30px;
+}
+/*二级标签圖片*/
+.label_item_label_top{
+    width: 32px;
+    height: 60px;
+    font-size: 12px;
+    padding: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    background: url(../image/microportraitsearch/twolabel_top.png) no-repeat;
+}
+/*二级标签圖片*/
+.label_item_label_bottom{
+    width: 32px;
+    height: 32px;
+    display:table-cell;
+    font-size:12px;
+    vertical-align:middle;
+    text-align:center;
+    background: url(../image/microportraitsearch/twolabel_bottom.png) no-repeat;
+}
+/**二級菜單中的文字***/
+.label_item_label_top_text{
+    display: inline-block;
+    margin-left:-2px;
+    width: 25px;
+}
+/*  E label_item   ----   left   */
+
+.label_item_right{
+    height: 100px;
+    width: 100px;
+    background: url('../image/microportraitsearch/right_line.png') no-repeat;
+}
+.label_item1_text_right{
+    color: #000;
+    position: absolute;
+    display: inline-flex;
+    margin-top: -15px;
+    margin-left: 40px;
+}
+.label_item1_div_right{
+    float: left;
+    margin-top: -55px;
+    margin-left: 100px;
+    display: inline-flex;
+}
+/*二级标签圖片*/
+.label_item_label_top_right{
+    width: 40px;
+    height: 60px;
+    font-size: 12px;
+    padding: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    background: url(../image/microportraitsearch/twolabel_top_right.png) no-repeat;
+}
+/*二级标签圖片*/
+.label_item_label_bottom_right{
+    width: 32px;
+    height: 32px;
+    display:table-cell;
+    font-size:12px;
+    vertical-align:middle;
+    text-align:center;
+    background: url(../image/microportraitsearch/twolabel_bottom.png) no-repeat;
+}
+/**二級菜單中的文字***/
+.label_item_label_top_text_right{
+    display: inline-block;
+    margin-left:-2px;
+    width: 25px;
+}
+/**************树状的列表***********/
+
+.tree {
+    min-height:20px;
+    padding:45px;
+    margin-bottom:20px;
+    background-color:#fbfbfb;
+    border:1px solid #999;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05)
+}
+.tree li {
+    list-style-type:none;
+    margin:0;
+    margin-left: 40px;
+    padding:15px 5px 0 5px;
+    position:relative
+}
+.tree li::before, .tree li::after {
+    content:'';
+    left:-20px;
+    position:absolute;
+    right:auto
+}
+.tree li::before {
+    border-left:1px solid #999;
+    bottom:50px;
+    height:100%;
+    top:0;
+    width:1px
+}
+.tree li::after {
+    border-top:1px solid #999;
+    height:20px;
+    top:29px;
+    width:25px
+}
+.tree li span {
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border:1px solid #999;
+    border-radius:5px;
+    display:inline-block;
+    padding:3px 8px;
+    text-decoration:none
+}
+.tree li.parent_li>span {
+    cursor:pointer
+}
+.tree>ul>li::before, .tree>ul>li::after {
+    border:0
+}
+.tree li:last-child::before {
+    height:30px
+}
+.tree li.parent_li>span:hover, .tree li.parent_li>span:hover+ul li span {
+    background:#eee;
+    border:1px solid #94a0b4;
+    color:#000
+}
+/**进度条***/
+progress {
+    display: inline-block;
+    width: 150px;
+    height: 10px;
+    background-color:#c6c6c6;
+
+    color: #3385ff; /*IE10*/
+}
+/*ie6-ie9*/
+progress ie {
+    display:block;
+    height: 100%;
+    background: #3385ff;
+}
+
+
+progress::-moz-progress-bar { background: #3385ff; }
+progress::-webkit-progress-bar { background: #c6c6c6; }
+progress::-webkit-progress-value  { background: #3385ff; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

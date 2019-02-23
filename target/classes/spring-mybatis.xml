@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="  
+        http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/tx  
+        http://www.springframework.org/schema/tx/spring-tx.xsd  
+        http://www.springframework.org/schema/aop  
+        http://www.springframework.org/schema/aop/spring-aop.xsd  
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- 非controller组件扫描service、dao、other -->
+	<context:component-scan base-package="com.lcsh">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- 加载配置文件 -->
+	<context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true"/>
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
+	<!-- MyBatis配置，跟SqlMapConfig文件作用相同 -->
+	<bean id="mybatisConfiguration" class="org.apache.ibatis.session.Configuration">
+		<!-- MyBatis（SQL）日志输出配置 -->
+      	<property name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"/>
+    </bean>
+
+	<!-- 配置mybatis的sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 扫描mappers.xml文件 -->
+		<property name="mapperLocations" value="classpath:com/lcsh/**/*.xml"/>
+		<!-- 引用MyBatis配置 -->
+		<property name="configuration" ref="mybatisConfiguration"/>
+	</bean>
+
+	<!-- 配置mybatis扫描dao层接口 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.lcsh.**.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+	
+	<!-- Spring 声明式事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 注解方式配置事物 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- 
+	<aop:config>
+		<aop:pointcut id="targetMethod" expression="execution(* com.lcsh.*.service.*.*(..))" />
+		<aop:advisor pointcut-ref="targetMethod" advice-ref="transactionAdvice" />
+	</aop:config>
+	
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="create*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="insert*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="edit*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="drop*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="modify*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	 -->
+</beans>  

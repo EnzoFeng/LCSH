@@ -1,0 +1,264 @@
+body{
+    background: #fff;
+}
+/**公共的样式**/
+.nav_wrap{
+    margin-top:52px;
+    height:38px;
+    width:100%;
+}
+.centent_wrap {
+    width: 100%;
+    height:100%;
+}
+/**左侧的面板**/
+.cont_left_label_wrap {
+    width: 195px;
+    height: 100%;
+    margin-top: 10px;
+    background: #fff;
+    float: left;
+    position: fixed;
+    left: 0;
+    z-index: 3;
+
+}
+/**右侧的面板**/
+.cont_right_label_wrap {
+    width: 100%;
+    float: left;
+    position: relative;
+    margin-left: 193px;
+}
+/**公共的样式**/
+
+.label_cont_top_addlabel {
+    height: 38px;
+    background: #fff;
+    margin-top: 10px;
+    border-bottom: 1px solid #3385ff;
+    position: relative;
+}
+.label_cont_top_l_addlabel {
+    font-size: 14px;
+    color: #3385ff;
+    float: left;
+    line-height: 38px;
+}
+/**标签名称，分类，更新周期**/
+.form_data{
+   height:45px;
+   font-size:12px;
+   padding:10px 0px;
+   width:100%;
+}
+/**业务含义**/
+.form_data_mean{
+    height:80px;
+    width:100%;
+    padding:10px 0px;
+}
+/*已选标签*/
+.form_data_choose{
+    height:163px;
+    width:100%;
+}
+/*已选标签关系*/
+.form_data_choose_relation{
+    height:45px;
+    width:100%;
+    margin-top: 10px;
+}
+/*按钮*/
+.form_data_btn{
+    height:45px;
+    width: 85%;
+    font-size:12px;
+    justify-content:center;
+    align-items:center;
+    display:-webkit-flex;
+    display:flex;
+}
+.center_btn{
+    height:39px;
+    width:254px;
+
+
+}
+.base_btn{
+    width:61px;
+    height:22px;
+    margin-top: 10px;
+    text-align:center;
+    color:#fff;
+}
+.cancel_btn{
+    background:#929292;
+
+}
+.create_btn{
+    float:right;
+    background:#0068b5;
+}
+.btn_span{
+    margin-top: -5px;
+    display: block;
+}
+/**中间的内容**/
+.addlabel_name{
+  width:150px;
+  height:23px;
+}
+.addlabel_name_limit{
+    color:#ff7165;
+}
+.addlabel_name_input{
+
+}
+.addlabel_type{
+  margin-left:25px;
+  font-size:12px;
+  display:inline-block;
+}
+.choose_div{
+    margin-top: 10px;
+  display:inline-block;
+}
+.choose_label_and{
+   width:60px;
+   height:22px;
+   cursor: pointer;
+   text-align: center;
+   position:relative;
+   display:inline-block;
+   border: 1px solid #ddd;
+
+}
+.choose_label_or{
+    width:60px;
+    height:22px;
+    cursor: pointer;
+    text-align: center;
+    position:relative;
+    display:inline-block;
+    border: 1px solid #ddd;
+
+}
+.chooselabel_text{
+  font-size:12px;
+}
+.chooselabel_img{
+    visibility: hidden;
+    width: 18px;
+    height: 16px;
+    position: absolute;
+    top: 4px;
+    right: 0px;
+    background: url(../image/labelsystem/andor.png) no-repeat 0px 0px;
+
+}
+.select_addlabel_type{
+    width:150px;
+    height:23px;
+}
+/*业务含义*/
+.addlabel_taskmean_textarea{
+    width: 300px;
+    height: 58px;
+    resize: none;
+    margin-top: -20px;
+    display: block;
+    margin-left: 88px;
+
+}
+.addlabel_taskmean{
+    font-size: 12px;
+    margin-left: 395px;
+    margin-top: -15px;
+    display: block;
+    color:#ff7165;
+}
+.contiunechoose{
+    width: 496px;
+    height: 32px;
+    margin-left: -1px;
+    background: #ddd;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    display: inline-block;
+}
+.contiunechoose_span{
+    float: right;
+    margin-top: 8px;
+    margin-right: 20px;
+    font-size: 12px;
+    color: #0068b5;
+    cursor:pointer;
+}
+/*已选标签*/
+.addlabel_chooselabel_textarea{
+    border: 1px solid #ddd;
+    width: 496px;
+    resize: none;
+    margin-top: -6px;
+    display: block;
+    margin-left: 88px;
+}
+.addlabel_div{
+  width:146px;
+  height:45px;
+  margin-left:10px;
+  margin-top:10px;
+  margin-bottom:10px;
+  display:inline-block;
+  border:1px solid #ddd;
+
+}
+.addlabel_div_con{
+  font-size:12px;
+  position:relative;
+}
+.addlabel_spanonelabel{
+    padding-top: 5px;
+    margin-left: 8px;
+    display: block;
+}
+.addlabel_div_con_img{
+    width: 21px;
+    cursor:pointer;
+    height: 19px;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background: url(../image/labelsystem/delcombinationlabel.png) no-repeat 0px 0px;
+}
+.addlabel_div_text{
+    display: block;
+    margin-left: 8px;
+    margin-top: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

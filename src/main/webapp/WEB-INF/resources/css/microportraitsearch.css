@@ -1,0 +1,501 @@
+body{
+    background:rgb(239,245,250);
+}
+a{
+  color:#333;
+}
+.centent_wrap{
+  margin-top: 13px;
+  height:100%;
+  width:100%;
+}
+.centent_wrap_middle{
+  background:#cbe0fa;
+  width:100%;
+  height:38px;
+  line-height:38px;
+}
+.centent_gid{
+  font-size:14px;
+  color:#0068b5;
+  margin-left:50px;
+}
+/*下面的左侧导航以及右侧的图表*/
+.content_wrap_bottom{
+  width:100%;
+  height:85%;
+}
+.left_spnal{
+  width:195px;
+  height: 100%;
+  background: #f5f7fa;
+  float: left;
+  border: 1px solid #eee;
+  position:fixed;
+  top: 88px;
+  left: 0;
+  z-index: 3;
+}
+.iteminfo{
+  width:190px;
+  height:30px;
+  line-height:30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+.item_description{
+  margin-left:10px;
+  width:58px;
+  float:left;
+
+}
+.item_description_email{
+  padding-left: 14px;
+}
+.item_description_qq{
+  padding-left: 20px;
+}
+.item_detils_phone{
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.item_detils_email{
+  width:50px;
+
+}
+/*人物的画像*/
+.right_spnal{
+  width:100%;/*984*/
+  height:100%;
+  margin-left: 195px;
+}
+.right_spal_wrap {
+  width: 83%;
+ /* height: 590px;*/
+  min-height:590px;
+  background: #fff;
+  border:1px solid #ddd;
+  margin: 12px;
+}
+.Microcosmic_centerIN_top{
+  height:44px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom:1px solid #ddd;
+
+}
+.Microcosmic_centerIN_top1{
+  width: 73px;
+  height: 39px;
+  display: inline-block;
+  line-height: 40px;
+  margin-top: 5px;
+  text-align: center;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  color: #000;
+  border-bottom: 2px solid #f48400;
+}
+.Microcosmic_centerIN_top2{
+  width: 73px;
+  height: 39px;
+  display: inline-block;
+  line-height: 40px;
+  margin-top: 5px;
+  margin-left: -4px;
+  text-align: center;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  color: gray;
+  border-bottom: 1px solid rgb(211,211,211);
+}
+.Microcosmic_centerIN_tubiao{
+
+}
+.Microcosmic_centerIN_liebiao{
+  display:none;
+}
+/**树状列表**/
+/**************树状的列表***********/
+
+.tree {
+  min-height:20px;
+  padding:45px;
+  margin-bottom:20px;
+  background-color:#fff;
+  border:none;
+
+}
+.tree li {
+  list-style-type:none;
+  margin:0;
+  margin-left: 40px;
+  padding:15px 5px 0 5px;
+  position:relative
+}
+
+.tree li::before, .tree li::after {
+  content:'';
+  left:-20px;
+  position:absolute;
+  right:auto
+}
+.tree li::before {
+  border-left:1px solid #999;
+  bottom:50px;
+  height:100%;
+  top:0;
+  width:1px
+}
+.tree li::after {
+  border-top:1px solid #999;
+  height:20px;
+  top:29px;
+  width:25px
+}
+.tree li span {
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border:1px solid #999;
+  border-radius:5px;
+  display:inline-block;
+  padding:3px 8px;
+  text-decoration:none
+}
+
+.tree li.parent_li>span {
+  cursor:pointer
+}
+.tree li.parent_li>span>i{
+  color:#0687e3;
+}
+
+.tree>ul>li::before, .tree>ul>li::after {
+  border:0
+}
+.tree li:last-child::before {
+  height:30px
+}
+.tree li.parent_li>span:hover, .tree li.parent_li>span:hover+ul li span {
+  background:#eee;
+  border:1px solid #94a0b4;
+  color:#000
+}
+/**进度条***/
+progress {
+  display: inline-block;
+  width: 150px;
+  height: 10px;
+  background-color:#c6c6c6;
+  border:0;
+  color: #f6992b; /*IE*/
+}
+/*ie6-ie9*/
+progress ie {
+  display:block;
+  height: 100%;
+  background: #f6992b;
+}
+progress::-moz-progress-bar { background: #f6992b; }
+progress::-ms-progress-bar { background: #f6992b; }
+progress::-webkit-progress-bar { background: #c6c6c6; }
+
+progress::-webkit-progress-value  { background: #f6992b; }
+progress::-ms-progress-value  { background: #f6992b; }
+progress::-moz-progress-value { background: #f6992b; }
+/*E  树状列表*/
+/**S 用户画像**/
+/**微观画像人物图像**/
+.microcosmic_people{
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  margin-top: 100px;
+  /*只需要在父元素上加这三句*/
+  justify-content: center; /*子元素水平居中*/
+  align-items: center; /*子元素垂直居中*/
+  display:-webkit-box;
+  -webkit-box-pack:center;
+  -webkit-box-align:center;
+  display:-webkit-flex;
+  display:-moz-box;
+  display:-moz-flex;
+  display:-ms-flexbox;
+  display:flex;
+}
+.microcosmic_people_img{
+  width:283px;
+  height:283px;
+  background:url('../image/microportraitsearch/people.png');
+}
+/*  S label_item   ----   left   */
+.label_item1{
+  margin-left: -150px!important;
+  height: 100px;
+  /*margin-bottom: 10px;*/
+  background: url('../image/microportraitsearch/left_line.png') no-repeat -15px 15px;
+}
+/*S 左下*/
+.label_item_leftbottom{
+  position: relative;
+  margin-left: -150px;
+  margin-top: 3px;
+  height: 100px;
+  background: url(../image/microportraitsearch/left_bottom_line.png) no-repeat -35px 53px;
+}
+/*E 左下*/
+/*文字*/
+.label_item1_text1{
+  color: #000;
+  position: absolute;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 140px;
+}
+/*左下*/
+.label_item1_text_leftbottom{
+  color:#000;
+  position: absolute;
+  top: 65px;
+}
+
+.label_item1_div1{
+  float: left;
+  margin-top: -30px;
+  margin-left: -190px;
+  display: inline-flex;
+  display: flex;
+  position: relative;
+  border: 1px solid #eee;
+}
+.label_item1_div2{
+  float: left;
+  margin-top: -30px;
+  margin-left: -100px;
+  display: inline-flex;
+  display: flex;
+  position: relative;
+  border: 1px solid #eee;
+}
+.people_li{
+  color:#000;
+  list-style-type:none;
+  width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size:12px;
+  background: #cbe0fa;
+  border-radius:5px;
+/*   padding-left: 5px; */
+  margin-bottom:5px;
+  text-align: center;
+}
+/*二级标签圖片*/
+.label_item_label_top{
+  width: 32px;
+  height: 60px;
+  font-size: 12px;
+  padding: 8px 1px 0px 2px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  background: url(../image/microportraitsearch/twolabel_top.png) no-repeat;
+
+}
+.label_item_label_top_leftbottom{
+  width: 32px;
+  height: 60px;
+  margin-top: 35px;
+  font-size: 12px;
+  padding: 8px 1px 0px 2px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  background: url(../image/microportraitsearch/twolabel_top.png) no-repeat;
+}
+/*二级标签圖片*/
+.label_item_label_bottom{
+  width: 32px;
+  height: 32px;
+  display:table-cell;
+  font-size:12px;
+  vertical-align:middle;
+  text-align:center;
+  background: url(../image/microportraitsearch/twolabel_bottom.png) no-repeat;
+}
+/**二級菜单中的文字***/
+.label_item_label_top_text{
+  display: inline-block;
+  cursor:pointer;
+  width: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 2px;
+  text-align: center;
+}
+/*  E label_item   ----   left   */
+.left{
+  margin-left:100px;
+}
+.right{
+  margin-top:30px;
+}
+.label_item_right{
+  height:100px;
+  width:150px;
+ /* margin-bottom: 10px;*/
+  background: url('../image/microportraitsearch/right_line.png') no-repeat;
+}
+.label_item_right_top{
+  margin-left:-150px;
+  margin-top:-60px;
+  height: 100px;
+  width: 100px;
+  background: url('../image/microportraitsearch/right_line.png') no-repeat;
+}
+.label_item1_div_leftbottom{
+  margin-left:-45px;
+}
+.label_item_rightbottom{
+  margin-top: 20px;
+  height: 100px;
+  width: 150px;
+  background: url(../image/microportraitsearch/right_bottom_line.png) no-repeat;
+  position: absolute;
+}
+.label_item_bottom{
+  margin-left: -150px;
+  margin-top: 90px;
+  height: 100px;
+  width: 150px;
+  background: url(../image/microportraitsearch/right_bottom_line.png) no-repeat;
+  position: absolute;
+}
+.label_item1_text_right{
+  color: #000;
+  position: absolute;
+  display: inline-flex;
+  display: flex;
+  margin-top: -15px;
+  margin-left: 40px;
+}
+.label_item1_text_rightbottom{
+  color: #000;
+  position: absolute;
+  display: inline-flex;
+  display: flex;
+  margin-top: 8px;
+  margin-left: 80px;
+}
+.label_item1_div_right{
+  float: left;
+  margin-top:-40px;
+  margin-left: 190px;
+  display: inline-flex;
+  display: flex;
+  position: relative;
+  border: 1px solid #eee;
+}
+.people_li_right{
+  width: 80px;
+  overflow: hidden;
+  font-size:12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 100px;
+  color: #000;
+  cursor: pointer;
+  list-style-type: none;
+  margin-bottom: 5px;
+  background: #cbe0fa;
+  border-radius: 5px;
+/*   padding-left: 5px; */
+  margin-left: 5px;
+  text-align: center;
+}
+.label_item1_div_rightbottom{
+  float: left;
+  margin-top: -30px;
+  margin-left: 100px;
+  display: inline-flex;
+  display: flex;
+  position: relative;
+}
+/*二级标签圖片*/
+.label_item_label_top_right{
+  position: relative;
+  top: 8px;
+  height: 60px;
+  font-size: 12px;
+  padding: 10px 10px 0px 0px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  background: url(../image/microportraitsearch/twolabel_top_right.png) no-repeat;
+  background-size:32px 32px;
+}
+.label_item_label_top_right_bottom{
+  height: 60px;
+  position: relative;
+  left: -110px;
+  top: 70px;
+  font-size: 12px;
+  padding: 10px 10px 0px 0px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  background: url(../image/microportraitsearch/rightbottom.png) no-repeat;
+  background-size: 32px 32px;
+}
+/*二级标签圖片*/
+.label_item_label_bottom_right{
+  width: 32px;
+  height: 32px;
+  display:table-cell;
+  font-size:12px;
+  vertical-align:middle;
+  text-align:center;
+  background: url(../image/microportraitsearch/twolabel_bottom.png) no-repeat;
+}
+/**二級菜單中的文字***/
+.label_item_label_top_text_right{
+  display: inline-block;
+  margin-left:-2px;
+  width: 25px;
+}
+/**左下的列表**/
+.left_bottom{
+  width:200px;
+  height:50px;
+  background:#f60;
+}
+.label_item1_div1 ul{
+  padding: 3px 4px 3px 3px;
+}
+.label_item1_div_right ul{
+  padding: 3px 4px 3px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
