@@ -37,6 +37,13 @@ public interface UserMapper {
     UserBean queryByUsername(String username);
     
     /**
+     * 根据用户username查询(查出密码)
+     * @param username
+     * @return
+     */
+    UserBean queryByUsernameWithPWD(String username);
+    
+    /**
      * 根据用户名及密码查询
      * @param userBean
      * @return

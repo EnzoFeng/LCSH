@@ -52,7 +52,7 @@ public class MyShiro extends AuthorizingRealm {
         //用户的角色集合
 //        List<UserRoleMapBean> roleMaps = user.getRoleMaps();
 //        List<RoleBean> roleList = new ArrayList<RoleBean>();
-//        Set<String> rolesName = new HashSet<String>();
+        Set<String> rolesName = new HashSet<String>();
 //        for(UserRoleMapBean roleMap:roleMaps){
 //            RoleBean role = roleService.queryForId(new RoleBean(roleMap.getRoleId()));
 //            if(role!=null){
@@ -61,7 +61,8 @@ public class MyShiro extends AuthorizingRealm {
 //            }
 //        }
         
-//        info.setRoles(rolesName);
+        rolesName.add("admin");
+        info.setRoles(rolesName);
         // 用户的角色对应的所有权限，如果只使用角色定义访问权限，下面的十行可以不要
 //        for (RoleBean role : roleList) {
 //            Collection<String> perssions = new ArrayList<String>();
@@ -90,11 +91,12 @@ public class MyShiro extends AuthorizingRealm {
         // 查出是否有此用户
         if(StringUtils.isEmpty(token.getUsername()))
         	return null;
-        UserBean user=userService.queryByUsername(token.getUsername());
+        UserBean user=userService.queryByUsernameWithPWD(token.getUsername());
         if(null == user)return null;
         // 若存在，将此用户存放到登录认证info中
         try {
-            return new SimpleAuthenticationInfo(new Principal(user), user.getPassword(), getName());
+        	AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(new Principal(user), user.getPassword(), getName());
+            return authenticationInfo;
         } catch (AuthenticationException e) {
             logger.error("==== 用户认证失败@err:{} ====", e);
             // 验证不通过

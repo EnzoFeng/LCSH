@@ -74,6 +74,18 @@ public class UserServiceImpl implements UserService {
 		return userBean;
 	}
 
+	@Override
+	public UserBean queryByUsernameWithPWD(String username) {
+		UserBean userBean = null;
+		try {
+			userBean = userMapper.queryByUsernameWithPWD(username);
+			logger.info("==== queryByUsernameWithPWD@exec:{} ====", userBean);
+		} catch (Exception e) {
+			logger.error("==== queryByUsernameWithPWD@err:{} ====", e);
+		}
+		return userBean;
+	}
+	
 
 	@Override
 	public UserBean queryByPhone(String phone) {
@@ -152,4 +164,5 @@ public class UserServiceImpl implements UserService {
 		}
 		return user;
 	}
+
 }

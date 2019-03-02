@@ -77,6 +77,7 @@ public class LoginController extends BaseController {
 	        logger.info("==== login@params:{} ====", form);
 	        UserBean userBean = new UserBean();
 	        userBean.setUsername(form.getUsername());
+//	        userBean.setPassword(form.getPassword());
 	        userBean.setPassword(MD5Util.getMd5(form.getPassword() + UserUtil.ENCRYPTING_KEY));
 	        user = userService.login(userBean);
 	        if (null == user) {
@@ -114,7 +115,7 @@ public class LoginController extends BaseController {
             currentUser.login(token);// 验证角色和权限
         }
         if(currentUser.isAuthenticated()) {
-        	modelAndView.setViewName("redirect:basicTag/queryBasicTag");
+        	modelAndView.setViewName("redirect:home");
         } else {
         	modelAndView.setViewName("login");
         }

@@ -82,12 +82,20 @@
 		where username = #{username} and status = 0
 	</select>
 	
+	<!-- 根据用户名查（查出PWD） -->
+	<select id = "queryByUsernameWithPWD" parameterType = "java.lang.String" resultMap = "BaseResultMap">
+		select 
+		*
+		from tbl_user
+		where username = #{username} and status = 0
+	</select>
+	
 	<!-- 根据用户名及密码查 -->
 	<select id = "queryByUsernameAndPassword" parameterType="com.lcsh.user.bean.UserBean" resultMap = "BaseResultMap">
 		select 
-		<include refid = "Base_Column_List" />
+		*
 		from tbl_user
-		where username = #{userBean.username} and password = #{userBean.password} and status = 0
+		where username = #{username} and password = #{password} and status = 0
 	</select>
 	
 	<!-- 根据手机号查 -->

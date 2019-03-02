@@ -32,6 +32,13 @@ public interface UserService {
      * @return
      */
     UserBean queryByUsername(String username);
+    
+	/**
+     * 根据用户username查询(包括PWD)
+     * @param username
+     * @return
+     */
+    UserBean queryByUsernameWithPWD(String username);
 	
     /**
      * 根据用户手机号查询

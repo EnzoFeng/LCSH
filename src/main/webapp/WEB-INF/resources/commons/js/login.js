@@ -12,7 +12,8 @@ $(document).ready(function(){
 			popMessage("用户名或密码不能为空！");
 			return;
 		}
-		$('input[name="password"]').val(md5(password));
+		//$('input[name="password"]').val(md5(password));
+		$('input[name="password"]').val(password);
 		
 		if(rememberMe){
 			$('input[name="rememberMe"]').val("true");
