@@ -1,5 +1,6 @@
 package com.lcsh.user.service.impl;
 
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.lcsh.user.bean.UserBean;
 import com.lcsh.user.mapper.UserMapper;
 import com.lcsh.user.service.UserService;
+import com.lcsh.utils.MD5Util;
+import com.lcsh.utils.UserUtil;
 
 
 /**
@@ -30,98 +33,123 @@ public class UserServiceImpl implements UserService {
 	@Resource
 	private UserMapper userMapper;
 	
+	
 	@Cacheable(value="userCache",key="'UserKey'+#userid")
 	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
-	public boolean addUser(UserBean bean) {
-		int state = 0;
+	public boolean addUser(UserBean userBean) {
 		try {
-			state = userMapper.addUser(bean);
-			logger.info("==== addUser@exec:{} ====", state);
+			//密码加密
+			userBean.setPassword(MD5Util.getMd5(userBean.getPassword() + UserUtil.ENCRYPTING_KEY));
+			userBean.setUpdateUserId(userBean.getCreateUserId());
+			userMapper.addUser(userBean);
+			logger.info("==== addUser@exec:{} ====", userBean);
 		} catch (Exception e) {
 			logger.error("==== addUser@err:{} ====", e);
 		}
-		return state>0;
+		return userBean.getId() > 0;
+	}
+
+	@Override
+	public UserBean queryById(Long userId) {
+		UserBean userBean = null;
+		try {
+			userBean = userMapper.queryById(userId);
+			logger.info("==== queryById@exec:{} ====", userBean);
+		} catch (Exception e) {
+			logger.error("==== queryById@err:{} ====", e);
+		}
+		return userBean;
 	}
 
 
-	public boolean delForUser(UserBean bean) {
-		int state = 0;
+	@Override
+	public UserBean queryByUsername(String username) {
+		UserBean userBean = null;
 		try {
-			state = userMapper.delUserForId(bean);
-			logger.info("==== delForUser@exec:{} ====", state);
+			userBean = userMapper.queryByUsername(username);
+			logger.info("==== queryByUserName@exec:{} ====", userBean);
 		} catch (Exception e) {
-			logger.error("==== delForUser@err:{} ====", e);
+			logger.error("==== queryByUserName@err:{} ====", e);
 		}
-		return state>0;
+		return userBean;
+	}
+
+
+	@Override
+	public UserBean queryByPhone(String phone) {
+		UserBean userBean = null;
+		try {
+			userBean = userMapper.queryByPhone(phone);
+			logger.info("==== queryByPhone@exec:{} ====", userBean);
+		} catch (Exception e) {
+			logger.error("==== queryByPhone@err:{} ====", e);
+		}
+		return userBean;
+	}
+
+
+	@Override
+	public UserBean queryByEmail(String email) {
+		UserBean userBean = null;
+		try {
+			userBean = userMapper.queryByEmail(email);
+			logger.info("==== queryByEmail@exec:{} ====", userBean);
+		} catch (Exception e) {
+			logger.error("==== queryByEmail@err:{} ====", e);
+		}
+		return userBean;
 	}
 
 
 	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
-	public boolean updateForPassword(UserBean bean) {
-		int state = 0;
+	@Override
+	public boolean deleteUserById(Long id) {
+		boolean result = false;
 		try {
-			state = userMapper.updateForPassword(bean);
-			logger.info("==== updateForPassword@exec:{} ====", state);
+			userMapper.deleteUserById(id);
+			result = true;
+			logger.info("==== deleteUserById@exec:{} ====", id);
 		} catch (Exception e) {
-			logger.error("==== updateForPassword@err:{} ====", e);
+			logger.error("==== deleteUserById@err:{} ====", e);
 		}
-		return state>0;
+		return result;
 	}
 
-	public UserBean login(UserBean bean) {
+	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+	@Override
+	public boolean updatePasswordById(UserBean userBean) {
+		boolean result = false;
+		try {
+			userBean.setPassword(MD5Util.getMd5(userBean.getPassword() + UserUtil.ENCRYPTING_KEY));
+			userMapper.updatePasswordById(userBean);
+			result = true;
+			logger.info("==== updatePasswordById@exec:{} ====", userBean);
+		} catch (Exception e) {
+			logger.error("==== updatePasswordById@err:{} ====", e);
+		}
+		return result;
+	}
+	
+	@Override
+	public List<UserBean> listUser() {
+		List<UserBean> userBeans = null;
+		try {
+			userBeans = userMapper.listUser();
+			logger.info("==== listUser@exec:{} ====", userBeans);
+		} catch (Exception e) {
+			logger.error("==== listUser@err:{} ====", e);
+		}
+		return userBeans;
+	}
+	
+	public UserBean login(UserBean userBean) {
 		UserBean user = null;
 		try {
-			user = userMapper.queryForUsernameAndPassword(bean);
+			user = userMapper.queryByUsernameAndPassword(userBean);
 			logger.info("==== login@exec:{} ====", user);
 		} catch (Exception e) {
 			logger.error("==== login@err:{} ====", e);
 		}
 		return user;
 	}
-
-    public UserBean queryForId(UserBean bean) {
-        UserBean user = null;
-        try {
-            user = userMapper.queryForId(bean);
-            logger.info("==== queryForId@exec:{} ====", user);
-        } catch (Exception e) {
-            logger.error("==== queryForId@err:{} ====", e);
-        }
-        return user;
-    }
-
-
-    public UserBean queryForUsername(UserBean bean) {
-        UserBean user = null;
-        try {
-            user = userMapper.queryForUsername(bean);
-            logger.info("==== queryForUsername@exec:{} ====", user);
-        } catch (Exception e) {
-            logger.error("==== queryForUsername@err:{} ====", e);
-        }
-        return user;
-    }
-
-
-    public List<UserBean> queryForConditions(UserBean bean) {
-        List<UserBean> beans = null;
-        try {
-            beans = userMapper.queryForConditions(bean);
-            logger.info("==== queryForConditions@exec:{} ====", beans);
-        } catch (Exception e) {
-            logger.error("==== queryForConditions@err:{} ====", e);
-        }
-        return beans;
-    }
-	
-    public int queryCountForConditions(UserBean bean) {
-        int count = 0;
-        try {
-            count = userMapper.queryCountForConditions(bean);
-            logger.info("==== queryCountForConditions@exec:{} ====", count);
-        } catch (Exception e) {
-            logger.error("==== queryCountForConditions@err:{} ====", e);
-        }
-        return count;
-    }
 }

@@ -14,69 +14,64 @@ public interface UserService {
 
 	/**
 	 * 新增用户
-	 * @param bean
+	 * @param userBean
 	 * @return
 	 */
-	boolean addUser(UserBean bean);
-	
-	/**
-	 * 根据ID删除用户
-	 * @param bean
-	 * @return
-	 */
-	boolean delForUser(UserBean bean);
-	
-	/**
-	 * 根据ID修改用户密码
-	 * @param bean 新密码、ID
-	 * @return
-	 */
-	boolean updateForPassword(UserBean bean);
-	
-	/**
-	 * 用户登录
-	 * @param bean 用户名、密码
-	 * @return
-	 */
-	UserBean login(UserBean bean);
-	
-	/**
-	 * 当前用户权限
-	 * @param bean
-	 * @return
-	 */
+	boolean addUser(UserBean userBean);
 	
 	/**
      * 根据用户id查询
-     * @param bean id
+     * @param userId
      * @return
      */
-	UserBean queryForId(UserBean bean);
+	UserBean queryById(Long userId);
 	
 	/**
      * 根据用户username查询
-     * @param bean id
+     * @param username
      * @return
      */
-    UserBean queryForUsername(UserBean bean);
+    UserBean queryByUsername(String username);
+	
+    /**
+     * 根据用户手机号查询
+     * @param phone
+     * @return
+     */
+    UserBean queryByPhone(String phone);
     
     /**
-     * 查询所有的用户
-     * pr=0时查询全部；否则确保sr为更新的数据
-     * state=0时查询所有的状态
-     * name是模糊查询
-     * @param bean
-     * @return List<UserBean>
+     * 根据用户邮箱查询
+     * @param email
+     * @return
      */
-    List<UserBean> queryForConditions(UserBean bean);
+    UserBean queryByEmail(String email);
     
-    /**
-     * 查询所有的用户总记录数
-     * pr=0时查询全部；否则确保sr为更新的数据
-     * state=0时查询所有的状态
-     * name是模糊查询
-     * @param bean
-     * @return List<UserBean>
-     */
-    int queryCountForConditions(UserBean bean);
+	/**
+	 * 根据ID删除用户(逻辑删除)
+	 * @param id
+	 * @return
+	 */
+	boolean deleteUserById(Long id);
+	
+	/**
+	 * 根据ID修改用户密码
+	 * @param userBean
+	 * @return
+	 */
+	boolean updatePasswordById(UserBean userBean);
+	
+	/**
+	 * 查看用户列表
+	 * @return
+	 */
+	List<UserBean> listUser();
+	
+	/**
+	 * 用户登录
+	 * @param userBean 用户名、密码
+	 * @return
+	 */
+	UserBean login(UserBean userBean);
+  
 }

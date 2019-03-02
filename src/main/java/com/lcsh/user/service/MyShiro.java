@@ -41,9 +41,7 @@ public class MyShiro extends AuthorizingRealm {
         // 获取登录时输入的用户名
         String loginName = principal.username;
         // 到数据库查是否有此对象
-        UserBean userBean = new UserBean();
-        userBean.setUsername(loginName);
-        UserBean user = userService.queryForUsername(userBean);
+        UserBean user = userService.queryByUsername(loginName);
         // 账号不存在
         if (user == null || user.getStatus() == 2) {
             return null;
@@ -92,11 +90,8 @@ public class MyShiro extends AuthorizingRealm {
         // 查出是否有此用户
         if(StringUtils.isEmpty(token.getUsername()))
         	return null;
-        UserBean userBean = new UserBean();
-        userBean.setUsername(token.getUsername());
-        UserBean user=userService.queryForUsername(userBean);
+        UserBean user=userService.queryByUsername(token.getUsername());
         if(null == user)return null;
-        
         // 若存在，将此用户存放到登录认证info中
         try {
             return new SimpleAuthenticationInfo(new Principal(user), user.getPassword(), getName());

@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lcsh.user.mapper.UserMapper">
-	<!-- params -->
-	<parameterMap id="BaseParamsMap" type="com.lcsh.user.bean.UserBean" />
 
 	<!-- result -->
 	<resultMap id="BaseResultMap" type="com.lcsh.user.bean.UserBean">
-		<id columns = "id" property = "id"/>
-		<result columns = "name"  property ="name"/>
-		<result columns = "phone"  property ="phone"/>
-		<result columns = "email"  property ="email"/>
-		<result columns = "username"  property ="username"/>
-		<result columns = "password"  property ="password"/>
-		<result columns = "role_id"  property ="roleId"/>
-		<result columns = "area_code"  property ="areaCode"/>
-		<result columns = "status"  property ="status"/>
-		<result columns = "create_user_id"  property ="createUserId"/>
-		<result columns = "create_time"  property ="createTime"/>
-		<result columns = "update_user_id"  property ="updateUserId"/>
-		<result columns = "update_time"  property ="updateTime"/>
+		<id column = "id" property = "id"/>
+		<result column = "name"  property ="name"/>
+		<result column = "phone"  property ="phone"/>
+		<result column = "email"  property ="email"/>
+		<result column = "username"  property ="username"/>
+		<result column = "role_id"  property ="roleId"/>
+		<result column = "area_code"  property ="areaCode"/>
+		<result column = "status"  property ="status"/>
+		<result column = "create_user_id"  property ="createUserId"/>
+		<result column = "create_time"  property ="createTime"/>
+		<result column = "update_user_id"  property ="updateUserId"/>
+		<result column = "update_time"  property ="updateTime"/>
 	</resultMap>
 
 	<!-- column -->
 	<sql id="Base_Column_List">
-		id,name,phone,email,username,password,role_id,area_code,status,create_user_id,create_time,update_user_id,update_time
+		id,name,phone,email,username,role_id,area_code,status,create_user_id,create_time,update_user_id,update_time
 	</sql>
 
-	<!-- userColumns -->
-	<sql id="userColumns">
+	<!-- Base_Column_List -->
+<!-- 	<sql id="userColumns">
 		id as id,
 		name as name,
 		phone as phone,
@@ -40,175 +37,91 @@
 		create_time as createTime,
 		update_user_id as updateUserId,
 		update_time as update_time
-    </sql>
+    </sql> -->
   
 	<!-- 新增用户 -->
 	<insert id="addUser" parameterType="com.lcsh.user.bean.UserBean" useGeneratedKeys="true" keyProperty="id" >
-    insert into tbl_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        username,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="idcard != null" >
-        idcard,
-      </if>
-      <if test="phone != null" >
-        phone,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="state != 0" >
-        state,
-      </if>
-      <if test="ctime != null" >
-        ctime,
-      </if>
-      <if test="utime != null" >
-        utime,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        #{username},
-      </if>
-      <if test="password != null" >
-        #{password},
-      </if>
-      <if test="name != null" >
-        #{name},
-      </if>
-      <if test="idcard != null" >
-        #{idcard},
-      </if>
-      <if test="phone != null" >
-        #{phone},
-      </if>
-      <if test="email != null" >
-        #{email},
-      </if>
-      <if test="state != 0" >
-        #{state},
-      </if>
-      <if test="ctime != null" >
-        #{ctime},
-      </if>
-      <if test="utime != null" >
-        #{utime},
-      </if>
-      <if test="remark != null" >
-        #{remark},
-      </if>
-    </trim>
-  </insert>
+	    insert into tbl_user
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	        username,
+	        password,
+	        name,
+	        phone,
+	        email,
+	        role_id,
+	        area_code,
+	        create_user_id,
+	        update_user_id
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	        #{username},
+	        #{password},
+	        #{name},
+	        #{phone},
+	        #{email},
+	      	#{roleId},
+	      	#{areaCode},
+	      	#{createUserId},
+	      	#{updateUserId}
+	    </trim>
+  	</insert>
+
+	<!-- 根据ID查询用户 -->
+	<select id = "queryById" parameterType = "java.lang.Long" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_user
+		where id = #{id} and status = 0
+	</select>
+	
+	<!-- 根据用户名查 -->
+	<select id = "queryByUsername" parameterType = "java.lang.String" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_user
+		where username = #{username} and status = 0
+	</select>
+	
+	<!-- 根据用户名及密码查 -->
+	<select id = "queryByUsernameAndPassword" parameterType="com.lcsh.user.bean.UserBean" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_user
+		where username = #{userBean.username} and password = #{userBean.password} and status = 0
+	</select>
+	
+	<!-- 根据手机号查 -->
+	<select id = "queryByPhone" parameterType = "java.lang.String" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_user
+		where phone = #{phone} and status = 0
+	</select>
+	
+	<!-- 根据邮箱查 -->
+	<select id = "queryByEmail" parameterType = "java.lang.String" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_user
+		where email = #{email} and status = 0
+	</select>
 
 	<!-- 根据ID删除用户 -->
-	<delete id="delUserForId" parameterMap="BaseParamsMap">
-		DELETE FROM tbl_user WHERE id=#{id}
+	<delete id="deleteUserById" parameterType = "java.lang.Long" >
+		update tbl_user set status = 1 where id = #{id} and status = 0
 	</delete>
 
 	<!-- 根据ID修改用户密码 -->
-	<update id="updateForPassword" parameterMap="BaseParamsMap">
-		UPDATE tbl_user SET password=#{password},utime=NOW() WHERE id=#{id}
+	<update id="updatePasswordById" parameterType="com.lcsh.user.bean.UserBean">
+		UPDATE tbl_user SET password = #{userBean.password} where id = #{userBean.id} and status = 0
 	</update>
 
-	<!-- 根据用户名和密码查询 -->
-	<select id="queryForUsernameAndPassword" parameterMap="BaseParamsMap" resultMap="BaseResultMap">
-		SELECT
-		<include refid="userColumns" />
-        from tbl_user a
-        left join `tbl_user_role_map` b on (b.state=1 and a.id = b.user_id)
-        left join `tbl_user_organization_map` c on (c.state=1 and a.id = c.user_id)
-        where a.username = #{username} AND a.password=#{password}
+	<!-- 获取用户列表 -->
+	<select id = "listUser" resultMap = "BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+        from tbl_user
+        WHERE status = 0
 	</select>
 
-    <!-- 按照条件查询用户数据 -->
-    <select id="queryForConditions" parameterMap="BaseParamsMap" resultMap="BaseResultMap">
-        SELECT
-        <include refid="Base_Column_List" />
-        from tbl_user a
-        where 1=1
-         <if test="username != null" >
-	       AND a.username = #{username}
-	     </if>
-	     <if test="password != null" >
-	       AND a.password = #{password}
-	     </if>
-	     <if test="name != null" >
-	       AND a.name LIKE CONCAT('%', #{name}, '%')
-	     </if>
-	     <if test="idcard != null" >
-	       AND a.idcard = #{idcard}
-	     </if>
-	     <if test="phone != null" >
-	       AND a.phone = #{phone}
-	     </if>
-	     <if test="email != null" >
-	       AND a.email = #{email},
-	     </if>
-	     <if test="state != 0" >
-	       AND a.state = #{state}
-	     </if>
-	     <if test="ctime != null" >
-	       AND DATE_FORMAT(a.ctime,'%Y-%m-%d') = DATE_FORMAT(#{ctime},'%Y-%m-%d')
-	     </if>
-	     <if test="utime != null" >
-	       AND DATE_FORMAT(a.utime,'%Y-%m-%d') = DATE_FORMAT(#{utime},'%Y-%m-%d')
-	     </if>
-	     <if test="remark != null" >
-	       AND a.remark LIKE CONCAT('%', #{remark}, '%')
-	     </if>
-	     <if test="pr != 0" >
-           LIMIT #{sr},#{pr}
-         </if>
-    </select>
-    
-    <!-- 按照条件查询用户记录数 -->
-    <select id="queryCountForConditions" parameterMap="BaseParamsMap" resultType="int">
-        SELECT COUNT(*) AS count from tbl_user a
-        WHERE 1=1
-         <if test="username != null" >
-           AND a.username = #{username}
-         </if>
-         <if test="password != null" >
-           AND a.password = #{password}
-         </if>
-         <if test="name != null" >
-           AND a.name LIKE CONCAT('%', #{name}, '%')
-         </if>
-         <if test="idcard != null" >
-           AND a.idcard = #{idcard}
-         </if>
-         <if test="phone != null" >
-           AND a.phone = #{phone}
-         </if>
-         <if test="email != null" >
-           AND a.email = #{email},
-         </if>
-         <if test="state != 0" >
-           AND a.state = #{state}
-         </if>
-         <if test="ctime != null" >
-           AND DATE_FORMAT(a.ctime,'%Y-%m-%d') = DATE_FORMAT(#{ctime},'%Y-%m-%d')
-         </if>
-         <if test="utime != null" >
-           AND DATE_FORMAT(a.utime,'%Y-%m-%d') = DATE_FORMAT(#{utime},'%Y-%m-%d')
-         </if>
-         <if test="remark != null" >
-           AND a.remark LIKE CONCAT('%', #{remark}, '%')
-         </if>
-         <if test="pr != 0" >
-           LIMIT #{sr},#{pr}
-         </if>
-    </select>
-    
 </mapper>

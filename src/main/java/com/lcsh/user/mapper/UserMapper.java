@@ -20,55 +20,61 @@ public interface UserMapper {
 	 * @param bean
 	 * @return
 	 */
-	public int addUser(UserBean bean);
+	int addUser(UserBean bean);
 	
 	/**
-	 * 根据ID删除用户
-	 * @param bean
-	 * @return
-	 */
-	public int delUserForId(UserBean bean);
-	
-	/**
-	 * 根据ID修改用户密码
-	 * @param bean 用户名、新密码、ID
-	 * @return
-	 */
-	public int updateForPassword(UserBean bean);
-	
-	/**
-	 * 根据用户名和密码查询
-	 * @param bean 用户名、密码
-	 * @return
-	 */
-	public UserBean queryForUsernameAndPassword(UserBean bean);
-	
-	/**
-	 * 根据用户id查询
-	 * @param bean id
-	 * @return
-	 */
-	public UserBean queryForId(UserBean bean);
+     * 根据用户id查询
+     * @param userId
+     * @return
+     */
+	UserBean queryById(Long id);
 	
 	/**
      * 根据用户username查询
-     * @param bean id
+     * @param username
      * @return
      */
-    public UserBean queryForUsername(UserBean bean);
+    UserBean queryByUsername(String username);
     
     /**
-     * 查询所有的用户
-     * @param bean
-     * @return List<UserBean>
+     * 根据用户名及密码查询
+     * @param userBean
+     * @return
      */
-    List<UserBean> queryForConditions(UserBean bean);
+    UserBean queryByUsernameAndPassword(UserBean userBean);
+	
+    /**
+     * 根据用户手机号查询
+     * @param phone
+     * @return
+     */
+    UserBean queryByPhone(String phone);
     
     /**
-     * 查询所有的用户总记录数
-     * @param bean
-     * @return List<UserBean>
+     * 根据用户邮箱查询
+     * @param email
+     * @return
      */
-    int queryCountForConditions(UserBean bean);
+    UserBean queryByEmail(String email);
+    
+	/**
+	 * 根据ID删除用户(逻辑删除)
+	 * @param id
+	 * @return
+	 */
+	int deleteUserById(Long id);
+	
+	/**
+	 * 根据ID修改用户密码
+	 * @param userBean
+	 * @return
+	 */
+	int updatePasswordById(UserBean userBean);
+	
+	/**
+	 * 获取用户列表
+	 * @return
+	 */
+	List<UserBean> listUser();
 }
 
