@@ -8,3 +8,15 @@ phone:"15810544160",
 email:"15810544160@163.com",
 createUserId:"1"
 }
+
+
+{
+  "areaCode": "252100",
+  "createTime": "2019-03-23T05:38:35.260Z",
+  "createUserId": 1,
+  "email": "15810544160@163.com",
+  "idCard": "392847657483987564",
+  "name": "张三",
+  "phone": "15810544160",
+  "schoolId": 1
+}

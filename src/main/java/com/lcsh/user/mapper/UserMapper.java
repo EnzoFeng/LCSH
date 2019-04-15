@@ -23,6 +23,20 @@ public interface UserMapper {
 	int addUser(UserBean bean);
 	
 	/**
+	 * 根据ID修改用户密码
+	 * @param userBean
+	 * @return
+	 */
+	int updatePasswordById(UserBean userBean);
+	
+	/**
+	 * 修改用户信息
+	 * @param userBean
+	 */
+	void updateUserById(UserBean userBean);
+	
+	
+	/**
      * 根据用户id查询
      * @param userId
      * @return
@@ -70,13 +84,7 @@ public interface UserMapper {
 	 * @return
 	 */
 	int deleteUserById(Long id);
-	
-	/**
-	 * 根据ID修改用户密码
-	 * @param userBean
-	 * @return
-	 */
-	int updatePasswordById(UserBean userBean);
+
 	
 	/**
 	 * 获取用户列表

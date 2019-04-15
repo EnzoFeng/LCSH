@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCClass mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lcsh.train.mapper.TrainClassMapper">
+<!-- result -->
+	<resultMap id="BaseResultMap" Class="com.lcsh.train.bean.TrainClassBean">
+		<id column = "id" property = "id"/>
+		<result column = "name"  property ="name"/>
+		<result column = "type_id"  property ="typeId"/>
+		<result column = "status"  property ="status"/>
+		<result column = "create_user_id"  property ="createUserId"/>
+		<result column = "create_time"  property ="createTime"/>
+		<result column = "update_user_id"  property ="updateUserId"/>
+		<result column = "update_time"  property ="updateTime"/>
+	</resultMap>
+
+	<!-- column -->
+	<sql id="Base_Column_List">
+		id,name,status,create_user_id,create_time,update_user_id,update_time
+	</sql>
+
+	<!-- Base_Column_List -->
+<!-- 	<sql id="TrainClassColumns">
+		id as id,
+		name as name,
+		phone as phone,
+		email as email,
+		TrainClassname as TrainClassname,
+		role_id as roleId,
+		area_code as areaCode,
+		status as status,
+		create_TrainClass_id as createTrainClassId,
+		create_time as createTime,
+		update_TrainClass_id as updateTrainClassId,
+		update_time as update_time
+    </sql> -->
+  
+	<!-- 新增培训类型 -->
+	<insert id="addTrainClass" parameterClass="com.lcsh.train.bean.TrainClassBean" useGeneratedKeys="true" keyProperty="id" >
+	    insert into tbl_train_Class
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	        name,
+	        type_id,
+	        create_user_id,
+	        update_user_id
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	        #{name},
+	        #{typeId},
+	      	#{createUserId},
+	      	#{updateUserId}
+	    </trim>
+  	</insert>
+	
+		<!-- 根据ID修改培训类型密码 -->
+	<update id="updateTrainClassById" parameterClass="com.lcsh.train.bean.TrainClassBean">
+		UPDATE tbl_train_Class 
+		<set>
+			<if test = "name != null and name != ''">
+				name = #{name},
+			</if>
+			<if test = "typeId != null and typeId != ''">
+				typeId = #{typeId},
+			</if>
+			<if test = "updateUserId != null and updateUserId != ''">
+				update_user_id = #{updateUserId}
+			</if>
+		</set>
+	</update>
+
+	<!-- 根据ID查询培训类型 -->
+	<select id = "queryById" parameterClass = "java.lang.Long" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_train_Class
+		where id = #{id} and status = 0
+	</select>
+	
+	<!-- 根据培训类型名查 -->
+	<select id = "queryByTrainClassName" parameterClass = "java.lang.String" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_train_Class
+		where name = #{name} and status = 0
+	</select>
+
+	<select id = "queryByTypeId" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_train_Class
+		where type_id = #{typeId} and status = 0
+	</select>
+
+	<!-- 根据ID删除培训类型 -->
+	<delete id="deleteTrainClassById" parameterClass = "java.lang.Long" >
+		update tbl_train_Class set status = 1 where id = #{id} and status = 0
+	</delete>
+
+	<!-- 获取培训类型列表 -->
+	<select id = "listTrainClass" resultMap = "BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+        from tbl_train_Class
+        WHERE status = 0
+	</select>
+
+</mapper>

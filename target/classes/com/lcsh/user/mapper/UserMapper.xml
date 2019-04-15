@@ -66,6 +66,24 @@
 	    </trim>
   	</insert>
 
+	<!-- 根据ID修改用户密码 -->
+	<update id="updatePasswordById" parameterType="com.lcsh.user.bean.UserBean">
+		UPDATE tbl_user SET password = #{userBean.password} where id = #{userBean.id} and status = 0
+	</update>
+	
+		<!-- 根据ID修改用户密码 -->
+	<update id="updateUserById" parameterType="com.lcsh.user.bean.UserBean">
+		UPDATE tbl_user 
+		<set>
+			<if test = "phone != null and phone != ''">
+				phone = #{phone},
+			</if>
+			<if test = "email != null and email != ''">
+				phone = #{phone},
+			</if>
+		</set>
+	</update>
+
 	<!-- 根据ID查询用户 -->
 	<select id = "queryById" parameterType = "java.lang.Long" resultMap = "BaseResultMap">
 		select 
@@ -118,11 +136,6 @@
 	<delete id="deleteUserById" parameterType = "java.lang.Long" >
 		update tbl_user set status = 1 where id = #{id} and status = 0
 	</delete>
-
-	<!-- 根据ID修改用户密码 -->
-	<update id="updatePasswordById" parameterType="com.lcsh.user.bean.UserBean">
-		UPDATE tbl_user SET password = #{userBean.password} where id = #{userBean.id} and status = 0
-	</update>
 
 	<!-- 获取用户列表 -->
 	<select id = "listUser" resultMap = "BaseResultMap">

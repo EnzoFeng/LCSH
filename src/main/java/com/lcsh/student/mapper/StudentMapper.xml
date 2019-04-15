@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lcsh.student.mapper.StudentMapper">
+
+	<!-- result -->
+	<resultMap id="BaseResultMap" type="com.lcsh.student.bean.StudentBean">
+		<id column = "id" property = "id"/>
+		<result column = "name"  property ="name"/>
+		<result column = "id_card"  property ="idCard"/>
+		<result column = "phone"  property ="phone"/>
+		<result column = "email"  property ="email"/>
+		<result column = "school_id"  property ="schoolId"/>
+		<result column = "area_code"  property ="areaCode"/>
+		<result column = "status"  property ="status"/>
+		<result column = "create_user_id"  property ="createUserId"/>
+		<result column = "create_time"  property ="createTime"/>
+		<result column = "update_user_id"  property ="updateUserId"/>
+		<result column = "update_time"  property ="updateTime"/>
+	</resultMap>
+
+	<!-- column -->
+	<sql id="Base_Column_List">
+		id,name,id_card, phone,email,school_id,area_code,status,create_user_id,create_time,update_user_id,update_time
+	</sql>
+  
+	<!-- 新增学员 -->
+	<insert id="addStudent" parameterType="com.lcsh.student.bean.StudentBean" useGeneratedKeys="true" keyProperty="id" >
+	    insert into tbl_train_student
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	        name,
+	        id_card,
+	        phone,
+	        email,
+	        <if test="schoolId != null and schoolId != ''">
+	        school_id,
+	        </if>
+	        area_code,
+	        create_user_id,
+	        update_user_id
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	        #{name},
+	        #{idCard},
+	        #{phone},
+	        #{email},
+	        <if test="schoolId != null and schoolId != ''">
+	        #{schoolId},
+	        </if>
+	      	#{areaCode},
+	      	#{createUserId},
+	      	#{updateUserId}
+	    </trim>
+  	</insert>
+
+	<update id = "updateStudent" parameterType="com.lcsh.student.bean.StudentBean">
+		update tbl_train_student
+		<set>
+			<if test = "name != null and name != ''">
+				name = #{name},
+			</if>
+			<if test = "phone != null and phone != ''">
+				phone = #{phone},
+			</if>
+			<if test = "email != null and email != ''">
+				email = #{email},
+			</if>
+			<if test = "schoolId != null and schoolId != ''">
+				school_id = #{schoolId},
+			</if>
+			<if test = "areaCode != null and areaCode != ''">
+				area_code = #{areaCode},
+			</if>
+			<if test = "updateUserId != null and updateUserId != ''">
+				update_user_id = #{updateUserId}
+			</if>
+		</set>
+	</update>
+
+	<!-- 根据ID查询学员 -->
+	<select id = "queryById" parameterType = "java.lang.Long" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_train_student
+		where id = #{id} and status = 0
+	</select>
+	
+	<!-- 根据学员名查 -->
+	<select id = "queryByName" parameterType = "java.lang.String" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_train_student
+		where name = #{name} and status = 0
+	</select>
+	
+	<!-- 根据学员身份证号查 -->
+	<select id = "queryByIdCard" parameterType = "java.lang.String" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_train_student
+		where id_card = #{idCard} and status = 0
+	</select>
+	
+	<!-- 根据手机号查 -->
+	<select id = "queryByPhone" parameterType = "java.lang.String" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_train_student
+		where phone = #{phone} and status = 0
+	</select>
+	
+	<!-- 根据邮箱查 -->
+	<select id = "queryByEmail" parameterType = "java.lang.String" resultMap = "BaseResultMap">
+		select 
+		<include refid = "Base_Column_List" />
+		from tbl_train_student
+		where email = #{email} and status = 0
+	</select>
+
+	<!-- 根据ID删除学员 -->
+	<delete id="deleteById" parameterType = "java.lang.Long" >
+		update tbl_train_student set status = 1 where id = #{id} and status = 0
+	</delete>
+
+	<!-- 获取学员列表 -->
+	<select id = "list" resultMap = "BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+        from tbl_train_student
+        WHERE status = 0
+	</select>
+
+</mapper>

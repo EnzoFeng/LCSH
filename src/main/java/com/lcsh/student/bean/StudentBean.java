@@ -1,6 +1,5 @@
-package com.lcsh.user.bean;
+package com.lcsh.student.bean;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import io.swagger.annotations.ApiModel;
@@ -9,14 +8,12 @@ import lombok.Data;
 
 /**
  * @author FengZhen
- * @date Jan 19, 2019
- * 用户bean
+ * @date Mar 6, 2019
+ * 学员基本信息
  */
 @Data
-@ApiModel(value = "UserBean", description="用户Bean")
-public class UserBean implements Serializable{
-
-	private static final long serialVersionUID = 1L;
+@ApiModel(value = "StudentBean", description="学员Bean")
+public class StudentBean {
 
 	/**
 	 * 主键ID
@@ -30,6 +27,13 @@ public class UserBean implements Serializable{
 	@ApiModelProperty(value = "姓名")
     private String name;
 
+	/**
+	 * 身份证号
+	 */
+	@ApiModelProperty(value = "身份证号")
+    private String idCard;
+	
+	
     /**
      * 手机号
      */
@@ -41,24 +45,6 @@ public class UserBean implements Serializable{
      */
 	@ApiModelProperty(value = "邮箱")
     private String email;
-
-    /**
-     * 登录用户名
-     */
-	@ApiModelProperty(value = "登录用户名")
-    private String username;
-
-    /**
-     * 登录密码
-     */
-	@ApiModelProperty(value = "登录密码")
-    private String password;
-    
-    /**
-     * 角色ID
-     */
-	@ApiModelProperty(value = "角色ID")
-    private Integer roleId;
     
     /**
      * 地区编码
@@ -66,6 +52,12 @@ public class UserBean implements Serializable{
 	@ApiModelProperty(value = "地区编码")
     private String areaCode;
 
+    /**
+     * school_id
+     */
+	@ApiModelProperty(value = "毕业院校Id")
+    private Long schoolId;
+	
     /**
      * 状态
      */
@@ -95,7 +87,7 @@ public class UserBean implements Serializable{
      */
 	@ApiModelProperty(value = "更新日期")
     private Date updateTime;
-    
+
 	public Long getId() {
 		return id;
 	}
@@ -110,6 +102,14 @@ public class UserBean implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getIdCard() {
+		return idCard;
+	}
+
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
 	}
 
 	public String getPhone() {
@@ -128,36 +128,20 @@ public class UserBean implements Serializable{
 		this.email = email;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Integer getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
-	}
-
 	public String getAreaCode() {
 		return areaCode;
 	}
 
 	public void setAreaCode(String areaCode) {
 		this.areaCode = areaCode;
+	}
+
+	public Long getSchoolId() {
+		return schoolId;
+	}
+
+	public void setSchoolId(Long schoolId) {
+		this.schoolId = schoolId;
 	}
 
 	public int getStatus() {
@@ -202,10 +186,10 @@ public class UserBean implements Serializable{
 
 	@Override
 	public String toString() {
-		return "UserBean [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", username="
-				+ username + ", password=" + password + ", roleId=" + roleId + ", areaCode=" + areaCode + ", status="
-				+ status + ", createUserId=" + createUserId + ", createTime=" + createTime + ", updateUserId="
-				+ updateUserId + ", updateTime=" + updateTime + "]";
+		return "StudentBean [id=" + id + ", name=" + name + ", idCard=" + idCard + ", phone=" + phone + ", email="
+				+ email + ", areaCode=" + areaCode + ", schoolId=" + schoolId + ", status=" + status + ", createUserId="
+				+ createUserId + ", createTime=" + createTime + ", updateUserId=" + updateUserId + ", updateTime="
+				+ updateTime + "]";
 	}
     
 }

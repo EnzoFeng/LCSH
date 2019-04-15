@@ -45,9 +45,9 @@ public class UserController {
 	UserService userService;
 	
 	@ApiOperation(value="用户添加",notes="用户名、密码、姓名、手机号、邮箱、角色ID、地区编码都不能为空")
-	@ApiImplicitParams({
-		@ApiImplicitParam(name = "userBean", value = "用户信息bean", dataType = "UserBean", paramType = "body")
-	})
+//	@ApiImplicitParams({
+//		@ApiImplicitParam(name = "UserBean", value = "用户信息bean", dataType = "UserBean", paramType = "body")
+//	})
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public void addUser(PrintWriter pw, @RequestBody @Validated UserBean userBean) {
@@ -163,6 +163,27 @@ public class UserController {
 		responseMsg.set(StateCode.SUCCESS, "用户查询成功!", userBean);
 		String result = JsonUtil.obj2Json(responseMsg);
 		logger.info("==== queryByEmail@result:{} ====", result);
+		pw.write(result);
+	}
+	
+	@ApiOperation(value = "根据id删除用户", notes = "根据id删除用户信息")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "id", value = "邮箱", dataType = "Long", paramType = "query")
+	})
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public void deleteUser(PrintWriter pw,  @RequestParam Long id) {
+		logger.info("==== deleteUser@params:{} ====", id);
+		Result responseMsg = new Result();
+		boolean operateResult = userService.deleteUserById(id);
+		if (operateResult) {
+			responseMsg.set(StateCode.SUCCESS, "操作成功!");
+		}else {
+			responseMsg.set(StateCode.FAILD, "操作失败!");
+		}
+		
+		String result = JsonUtil.obj2Json(responseMsg);
+		logger.info("==== deleteUser@result:{} ====", result);
 		pw.write(result);
 	}
 	
